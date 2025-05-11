@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www/thymeleaf.org"
+      lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Food Order Application</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+  </head>
+  <body>
+    <h1>Prepare your own food!</h1>
+    <img th:src="@{/images/FoodOrder.png}"/>
+
+    <form method="POST" th:object="${order}">
+      <div class="grid">
+        <div class="ingredients-group" id="wraps">
+          <h3>Wybierz rodzaj jedzenia:</h3>
+          <div th:each="ingredient : ${wrap}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+            <span th:text="${ingredient.name}">SKŁADNIK</span><br/>
+          </div>
+        </div>
+
+
+        <div class="ingredients-group" id="proteins">
+          <h3>Wybierz mięso:</h3>
+          <div th:each="ingredient : ${protein}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+            <span th:text="${ingredient.name}">SKŁADNIK</span><br/>
+          </div>
+        </div>
+
+
+        <div class="ingredients-group" id="cheeses">
+          <h3>Wybierz sery:</h3>
+          <div th:each="ingredient : ${cheese}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+            <span th:text="${ingredient.name}">SKŁADNIK</span><br/>
+          </div>
+        </div>
+
+
+        <div class="ingredients-group" id="veggies">
+          <h3>Wybierz warzywa:</h3>
+          <div th:each="ingredient : ${veggies}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+            <span th:text="${ingredient.name}">SKŁADNIK</span><br/>
+          </div>
+        </div>
+
+
+        <div class="ingredients-group" id="sauces">
+          <h3>Wybierz sosy:</h3>
+          <div th:each="ingredient : ${sauce}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+            <span th:text="${ingredient.name}">SKŁADNIK</span><br/>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Nadaj nazwe przygotowanemu jedzeniu:</h3>
+        <input type="text" th:field="*{name}"/>
+        <br/>
+        <button>Wyślij swoje zamówienie</button>
+      </div>
+    </form>
+  </body>
+</html>

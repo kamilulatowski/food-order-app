@@ -14,17 +14,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(FoodController.class)
-public class FoodControllerTest {
+@WebMvcTest(OrderFoodController.class)
+public class OrderFoodControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testHomePage() throws Exception {
-        mockMvc.perform(get("/"))
+    public void testShowDesignForm() throws Exception {
+        mockMvc.perform(get("/order"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"))
-                .andExpect(content().string(containsString("Welcome")));
+                .andExpect(view().name("order"))
+                .andExpect(content().string(containsString("Prepare your own food!")));
     }
 }
