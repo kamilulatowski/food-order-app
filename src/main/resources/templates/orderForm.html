@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Order Application</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <form method="POST" th:action="@{/order/create}" th:object="${order}">
+        <h1>Zamów przygotowane jedzenie!</h1>
+        <img th:src="@{/images/FoodOrder.png}"/>
+        <a th:href="@{/order}" id="another">Przygotuj kolejne jedzenie</a><br/>
+
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                Usuń wymienione problemy i spróbuj ponownie.
+            </span>
+        </div>
+
+        <h3>Adres dostawy: </h3>
+        <label for="address.name">Imię i nazwisko: </label>
+        <input type="text" th:field="*{address.name}">
+        <br/>
+        <label for="address.street">Ulica: </label>
+        <input type="text" th:field="*{address.street}">
+        <br/>
+        <label for="address.city">Miejscowość: </label>
+        <input type="text" th:field="*{address.city}">
+        <br/>
+        <label for="address.state">Województwo: </label>
+        <input type="text" th:field="*{address.state}">
+        <br/>
+        <label for="address.zip">Kod pocztowy: </label>
+        <input type="text" th:field="*{address.zip}">
+        <br/>
+
+        <h3>Sposób płatności: </h3>
+        <label for="payment.ccNumber">Numer karty kredytowej: </label>
+        <input type="text" th:field="*{payment.ccNumber}">
+        <br/>
+        <label for="payment.ccExpiration">Data ważności: </label>
+        <input type="text" th:field="*{payment.ccExpiration}">
+        <br/>
+        <label for="payment.ccCVV">Kod CVV: </label>
+        <input type="text" th:field="*{payment.ccCVV}">
+        <br/>
+
+        <input type="submit" value="Złóż zamówienie">
+    </form>
+</body>
+</html>
