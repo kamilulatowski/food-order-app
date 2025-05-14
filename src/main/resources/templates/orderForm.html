@@ -20,31 +20,55 @@
         </div>
 
         <h3>Adres dostawy: </h3>
-        <label for="address.name">Imię i nazwisko: </label>
+        <label for="name">Imię i nazwisko: </label>
         <input type="text" th:field="*{address.name}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{address.name}">Podanie imienia i nazwiska jest obowiązkowe.</span>
         <br/>
-        <label for="address.street">Ulica: </label>
+        <label for="street">Ulica: </label>
         <input type="text" th:field="*{address.street}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('street')}"
+              th:errors="*{address.street}">Podanie ulicy jest obowiązkowe.</span>
         <br/>
-        <label for="address.city">Miejscowość: </label>
+        <label for="city">Miejscowość: </label>
         <input type="text" th:field="*{address.city}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('city')}"
+              th:errors="*{address.city}">Podanie nazwy miejscowości jest obowiązkowe.</span>
         <br/>
-        <label for="address.state">Województwo: </label>
+        <label for="state">Województwo: </label>
         <input type="text" th:field="*{address.state}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('state')}"
+              th:errors="*{address.state}">Podanie nazwy województwa jest obowiązkowe.</span>
         <br/>
-        <label for="address.zip">Kod pocztowy: </label>
+        <label for="zip">Kod pocztowy: </label>
         <input type="text" th:field="*{address.zip}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('zip')}"
+              th:errors="*{address.zip}">Podanie kodu pocztowego jest obowiązkowe..</span>
         <br/>
 
         <h3>Sposób płatności: </h3>
-        <label for="payment.ccNumber">Numer karty kredytowej: </label>
+        <label for="ccNumber">Numer karty kredytowej: </label>
         <input type="text" th:field="*{payment.ccNumber}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccNumber')}"
+              th:errors="*{payment.ccNumber}">Błąd numeru karty kredytowej.</span>
         <br/>
-        <label for="payment.ccExpiration">Data ważności: </label>
+        <label for="ccExpiration">Data ważności: </label>
         <input type="text" th:field="*{payment.ccExpiration}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccExpiration')}"
+              th:errors="*{payment.ccExpiration}">Wartość musi być w formacie MM/RR.</span>
         <br/>
-        <label for="payment.ccCVV">Kod CVV: </label>
+        <label for="ccCVV">Kod CVV: </label>
         <input type="text" th:field="*{payment.ccCVV}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccCVV')}"
+              th:errors="*{payment.ccCVV}">Nieprawidłowy kod CVV.</span>
         <br/>
 
         <input type="submit" value="Złóż zamówienie">

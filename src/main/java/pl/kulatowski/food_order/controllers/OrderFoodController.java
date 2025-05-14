@@ -1,8 +1,10 @@
 package pl.kulatowski.food_order.controllers;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,7 +61,10 @@ public class OrderFoodController {
     }
 
     @PostMapping
-    public String processOrder(Order order) {
+    public String processOrder(@Valid Order order, Errors errors) {
+        if (errors.hasErrors()) {
+            return "order";
+        }
         log.info("Creating new order: {}", order);
         return "redirect:/order/current";
     }
@@ -71,7 +76,10 @@ public class OrderFoodController {
     }
 
     @PostMapping("/create")
-    public String createOrder(Order order) {
+    public String createOrder(@Valid Order order, Errors errors) {
+        if (errors.hasErrors()) {
+            return "orderForm";
+        }
         log.info("Zamówienie zostało złożone: {}", order);
         return "redirect:/";
     }
